@@ -1,7 +1,7 @@
 # Getting and Cleaning Data Course Project
 This file explains the way run_analysis.R script works
 
-This script get some data collected from the accelerometers from the Samsung Galaxy S smartphone and perform the following steps:
+This script gets some data collected from the accelerometers from the Samsung Galaxy S smartphone and perform the following steps:
 
 1. Merges the training and the test sets to create one data set.
 2. Extracts only the measurements on the mean and standard deviation for each measurement. 
