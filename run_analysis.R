@@ -104,16 +104,19 @@ output <- as.data.frame(output)
   
 colnames(output) <- colnames(appropriateData) #Assign colnames
 
-#Filling the Matrix, with the 30 subjects x 6activities combination:
+#Filling the Matrix, with the 30 subjects x 6 activities combination:
 row <- 1
+#loops through each subject
 for(i in 1:subjectLength) {
+  #loops through each activity
   for(j in 1:activityLabelsLength) {
-    output[row, 1] <- sort(unique(mergedSubject)[, 1])[i]
-    output[row, 2] <- activityLabels[j, 2]
+    output[row, 1] <- sort(unique(mergedSubject)[, 1])[i] #Fill the First col of the row with the subject
+    output[row, 2] <- activityLabels[j, 2] #Fill the second col of the row with the activity name
     bool1 <- i == appropriateData$subject
     bool2 <- activityLabels[j, 2] == appropriateData$activityLabels
-    output[row, 3:columnLength] <- colMeans(appropriateData[bool1&bool2, 3:columnLength]) #Fill with the mean
-    row <- row + 1
+    output[row, 3:columnLength] <- colMeans(appropriateData[bool1&bool2, 3:columnLength]) #Fill the remaining cols with the means
+    
+    row <- row + 1 #once we have filled every col of the row we are ready for the following
   }
 }
 
